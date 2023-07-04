@@ -87,28 +87,6 @@ def app():
             # Play the audio
             st.audio(audio, format='audio/wav')
 
-            
-            gif_base64 = base64.b64encode(file_).decode("utf-8")
-            audio_base64 = base64.b64encode(audio).decode("utf-8")
-
-                        
-            # Create an HTML audio element with the embedded GIF source
-            html_audio = f'''
-            <audio controls>
-            <source type="audio/wav" src="data:audio/wav;base64,{audio_base64}">
-            Your browser does not support the audio element.
-            </audio>
-            '''
-
-            # Create an HTML image element with the embedded GIF source
-            html_image = f'''
-            <img src="data:image/gif;base64,{gif_base64}" alt="gif">
-            '''
-
-            # Display the HTML audio element and GIF in Streamlit
-            st.markdown(html_audio + html_image, unsafe_allow_html=True)
-
-
 
         except UnauthenticatedRateLimitError:
             e = UnauthenticatedRateLimitError("Unauthenticated Rate Limit Error")
